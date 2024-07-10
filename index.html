@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
   <title>Frontend Mentor | Article preview component</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -19,14 +20,26 @@
   <main class="main">
     <div class="container">
       <div class="image">
-        <img src="images/drawers.jpg" alt="Picture of drawers">
+        <img class="drawers-image" src="images/drawers.jpg" alt="Picture of drawers">
       </div>
       <div class="text-box">
         <h1>Shift the overall look and feel by adding these wonderful 
           touches to furniture in your home</h1>
-          <p>ver been in a room and felt like something was missing? Perhaps 
+          <p class="paragraph">Ever been in a room and felt like something was missing? Perhaps 
             it felt slightly bare and uninviting. I’ve got some simple tips 
             to help you make any room feel complete.</p>
+            <div class="bottom-text">
+              <div class="avatar-name">
+                <img class="avatar" src="images/avatar-michelle.jpg" alt="user avatar">
+                  <div>
+                    <h4>Michelle Appleton</h4>
+                    <p class="date">28 Jun 2020</p>
+                  </div>
+              </div>
+              
+              <img class="icon" src="images/icon-share.svg" alt="share icon">
+              
+            </div>
       </div>
     </div>
   </main>
