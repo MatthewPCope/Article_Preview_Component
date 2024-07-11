@@ -34,12 +34,12 @@ body{
     display: grid;
     grid-template-columns: 1fr 2fr;
     border-radius: 20px;
-    overflow: hidden;
     box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0 , 0.06);
 }
 .drawers-image{
     width: 28.5rem;
     height: 28rem;
+    border-radius: 20px 0 0 20px
 }
 .text-box{
     display: flex;
@@ -77,4 +77,119 @@ h1{
     padding: 1rem;
     background-color: #ecf2f9;
     border-radius: 50%;
+}
+.card-share-content {
+    border-radius: 20px;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.625rem);
+    padding: 1rem 2rem;
+    background-color: var(--color-very-dark-grayish-blue);
+    transition: opacity 200ms ease;
+    box-shadow: hsla(217, 19%, 35%, 10%) 0px 12px 24px 12px;
+}
+.card-share-label {
+    color: var(--color-light-grayish-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.47em;
+    font-size: 0.75rem;
+    margin-right: 1.5rem;
+}
+.card-share-list {
+    position: relative;
+    z-index: 999;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+.card-share-item a {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+}
+.card-share-item a:focus-visible {
+    outline: 2px solid var(--color-light-grayish-blue);
+    outline-offset: 4px;
+}
+.card-share-label {
+    position: relative;
+    z-index: 999;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5625rem 0 0.625rem 0;
+    border: none;
+    color: var(--color-light-grayish-blue);
+    cursor: pointer;
+    background-color: var(--color-very-dark-grayish-blue);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    transition-property: background-color, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+}
+.card-share-btn.menu-shown {
+    background-color: var(--color-very-dark-grayish-blue);
+}
+.card-share-btn.menu-shown svg path {
+    fill: var(--color-very-dark-grayish-blue);
+}
+.card-share-btn svg {
+    pointer-events: none;
+}
+.card-share-btn svg path {
+    transition: fill 200ms ease;
+}
+.card-share-btn:focus-visible {
+    outline: 2px dashed var(--color-very-dark-grayish-blue);
+    outline-offset: 4px;
+}
+.card-share-btn:active {
+    transform: scale(0.95);
+}
+.card-share-btn{
+    padding: 1rem;
+    background-color: #ecf2f9;
+    border-radius: 50%;
+}
+@media (hover: hover) {
+    .card-share-btn:hover {
+        background-color: var(--color-very-dark-grayish-blue);
+    }
+    .card-share-btn:hover svg path {
+        fill: var(--color-light-grayish-blue);
+    }
+}
+@media(min-width:42em){
+    .card-share {
+        position: relative;
+    }
+    .card-share-btn{
+        padding: 1rem;
+        background-color: #ecf2f9;
+        border-radius: 50%;
+    }
+    .card-share-content {
+        top: initial;
+        left: initial;
+        bottom: calc(100% + 1.75rem);
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .card-share-content-shape {
+        display: block;
+        bottom: -0.5rem;
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        background-color: var(--color-very-dark-grayish-blue);
+    }
 }
