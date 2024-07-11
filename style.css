@@ -134,6 +134,9 @@ h1{
     transition-duration: 200ms;
     transition-timing-function: ease;
 }
+.card-share-content p{
+    color: #fff;
+}
 .card-share-btn.menu-shown {
     background-color: var(--color-very-dark-grayish-blue);
 }
