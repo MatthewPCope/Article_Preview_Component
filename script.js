@@ -3,83 +3,69 @@ const shareMenu = {
     menuElement: document.querySelector(".card-share-content"),
     toggleButton: document.querySelector(".card-share-btn"),
     isShowing: false,
+
     showMenu() {
-        requestAnimationFrame(() => {
-            this.menuElement.style.display = "flex";
-            this.menuElement.style.opacity = "0";
-            this.toggleButton.classList.add("menu-shown");
+        this.menuElement.style.display = "flex";
+        this.menuElement.style.opacity = "0";
+        this.toggleButton.classList.add("menu-shown");
 
         const rect = this.menuElement.getBoundingClientRect();
-        let offsetX = outerWidth - (rect.width + rect.left);
+        let offsetX = window.outerWidth - (rect.width + rect.left);
         if (offsetX < 0) {
-            const x = Math.min(Math.abs(offsetX) + 24);
-            this.menuElement.style.margin = `0 ${x}px 0 0`;
-            this.vShape.style.margin = `0 0 0 ${x}px`;
+            const x = Math.abs(offsetX) + 24;
+            this.menuElement.style.marginRight = `${x}px`;
+            this.vShape.style.marginLeft = `${x}px`;
         }
 
         requestAnimationFrame(() => {
-            this.vShape.style.opacity = null;
-            this.menuElement.style.opacity = null;
-            });
+            this.menuElement.style.opacity = "1";
         });
     },
 
     hideMenu() {
-        let startTime = null;
+        this.menuElement.style.opacity = "0";
+        this.toggleButton.classList.remove("menu-shown");
 
-        function resetStyling(t) {
-            if (!startTime) {
-            shareMenu.menuElement.style.opacity = "0";
-            shareMenu.toggleButton.classList.remove("menu-shown");
-            startTime = t;
-            }
-
-        if (t - startTime < 200) {
-            requestAnimationFrame(resetStyling);
-        } else {
-            requestAnimationFrame(() => {
-            shareMenu.menuElement.style.margin = null;
-            shareMenu.menuElement.style.display = null;
-            shareMenu.vShape.style.margin = null;
-        });
-    }
-    }
-        requestAnimationFrame(resetStyling);
-},
+        setTimeout(() => {
+            this.menuElement.style.display = "none";
+            this.menuElement.style.marginRight = "";
+            this.vShape.style.marginLeft = "";
+        }, 200);
+    },
 
     toggleMenu() {
         if (this.isShowing) {
-        this.hideMenu();
-        this.isShowing = false;
-    } else {
-        this.showMenu();
-        this.isShowing = true;
-    }
-},
+            this.hideMenu();
+        } else {
+            this.showMenu();
+        }
+        this.isShowing = !this.isShowing;
+    },
+
     init() {
         this.toggleButton.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.toggleMenu();
-    });
+            e.stopPropagation();
+            this.toggleMenu();
+        });
 
         this.menuElement.addEventListener("click", (e) => {
-        e.stopPropagation();
-    });
+            e.stopPropagation();
+        });
 
-        document.addEventListener("click", (e) => {
+        document.addEventListener("click", () => {
             if (this.isShowing) {
-            this.hideMenu();
-            this.isShowing = false;
-        }
-    });
+                this.hideMenu();
+                this.isShowing = false;
+            }
+        });
 
         window.addEventListener("resize", () => {
             if (this.isShowing) {
-            this.hideMenu();
-            this.isShowing = false;
-        }
-    });
-},
+                this.hideMenu();
+                this.isShowing = false;
+            }
+        });
+    },
 };
 
 shareMenu.init();

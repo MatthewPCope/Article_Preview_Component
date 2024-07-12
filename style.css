@@ -73,21 +73,21 @@ h1{
 .date{
     color: var(--color-desaturated-dark-blue);
 }
-.icon{
+/* .icon{
     padding: 1rem;
     background-color: #ecf2f9;
     border-radius: 50%;
-}
+} */
 .card-share-content {
-    border-radius: 20px;
+    border-radius: 5px;
     position: absolute;
     display: none;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     left: 0;
     right: 0;
     top: calc(100% + 0.625rem);
-    padding: 1rem 2rem;
+    padding: 1rem 4rem;
     background-color: var(--color-very-dark-grayish-blue);
     transition: opacity 200ms ease;
     box-shadow: hsla(217, 19%, 35%, 10%) 0px 12px 24px 12px;
@@ -127,7 +127,7 @@ h1{
     color: var(--color-light-grayish-blue);
     cursor: pointer;
     background-color: var(--color-very-dark-grayish-blue);
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     transition-property: background-color, transform;
