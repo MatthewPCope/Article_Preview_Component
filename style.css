@@ -196,3 +196,18 @@ h1{
         background-color: var(--color-very-dark-grayish-blue);
     }
 }
+@media(max-width:23em){
+    .container{
+        margin: 0 auto;
+        width: min(100vw - 3rem, 25rem);
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .drawers-image{
+        width: 100%;
+        max-height: 12.5rem;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+    }
+}
