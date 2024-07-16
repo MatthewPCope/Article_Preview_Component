@@ -1,70 +1,66 @@
 const shareMenu = {
-    vShape: document.querySelector(".card-share-content-shape"),
-    menuElement: document.querySelector(".card-share-content"),
-    toggleButton: document.querySelector(".card-share-btn"),
-    isShowing: false,
+    elements: {
+        menu: document.querySelector(".card-share-content"),
+        toggleButton: document.querySelector(".card-share-btn"),
+        vShape: document.querySelector(".card-share-content-shape"),
+    },
+        isShowing: false,
 
     showMenu() {
-        this.menuElement.style.display = "flex";
-        this.menuElement.style.opacity = "0";
-        this.toggleButton.classList.add("menu-shown");
+        this.elements.menu.style.display = "flex";
+        this.elements.menu.style.opacity = 0;
+        this.elements.toggleButton.classList.add("menu-shown");
 
-        const rect = this.menuElement.getBoundingClientRect();
-        let offsetX = window.outerWidth - (rect.width + rect.left);
-        if (offsetX < 0) {
-            const x = Math.abs(offsetX) + 24;
-            this.menuElement.style.marginRight = `${x}px`;
-            this.vShape.style.marginLeft = `${x}px`;
+        const menuWidth = this.elements.menu.offsetWidth;
+        const windowWidth = window.innerWidth;
+        const rightEdge = menuWidth + this.elements.menu.offsetLeft;
+        if (rightEdge > windowWidth) {
+        const overflow = rightEdge - windowWidth;
+            this.elements.menu.style.marginRight = `-${overflow}px`;
+            this.elements.vShape.style.marginLeft = `${overflow}px`;
+        } else {
+            this.elements.menu.style.marginRight = "";
+            this.elements.vShape.style.marginLeft = "";
         }
 
         requestAnimationFrame(() => {
-            this.menuElement.style.opacity = "1";
+            this.elements.menu.style.opacity = 1;
         });
     },
 
     hideMenu() {
-        this.menuElement.style.opacity = "0";
-        this.toggleButton.classList.remove("menu-shown");
+        this.elements.menu.style.opacity = 0;
+        this.elements.toggleButton.classList.remove("menu-shown");
 
-        setTimeout(() => {
-            this.menuElement.style.display = "none";
-            this.menuElement.style.marginRight = "";
-            this.vShape.style.marginLeft = "";
+    setTimeout(() => {
+        this.elements.menu.style.display = "none";
+        this.elements.menu.style.marginRight = "";
+        this.elements.vShape.style.marginLeft = "";
         }, 200);
     },
 
     toggleMenu() {
-        if (this.isShowing) {
-            this.hideMenu();
-        } else {
-            this.showMenu();
-        }
         this.isShowing = !this.isShowing;
+        if (this.isShowing) {
+            this.showMenu();
+        } else {
+            this.hideMenu();
+        }
     },
 
     init() {
-        this.toggleButton.addEventListener("click", (e) => {
-            e.stopPropagation();
-            this.toggleMenu();
-        });
+        this.elements.toggleButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.toggleMenu();
+    });
 
-        this.menuElement.addEventListener("click", (e) => {
-            e.stopPropagation();
-        });
+        document.addEventListener("click", (e) => {
+            if (this.isShowing && !e.target.closest(".card-share-content")) {
+            this.hideMenu();
+        }
+    });
 
-        document.addEventListener("click", () => {
-            if (this.isShowing) {
-                this.hideMenu();
-                this.isShowing = false;
-            }
-        });
-
-        window.addEventListener("resize", () => {
-            if (this.isShowing) {
-                this.hideMenu();
-                this.isShowing = false;
-            }
-        });
+        window.addEventListener("resize", this.toggleMenu);
     },
 };
 

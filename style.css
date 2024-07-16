@@ -2,7 +2,7 @@
     --color-very-dark-grayish-blue: hsl(217, 19%, 35%);
     --color-desaturated-dark-blue:  hsl(214, 17%, 51%);
     --color-grayish-blue: hsl(212, 23%, 69%);
-    --color-light-grayish-blue: hsl(210, 46%, 95%)
+    --color-light-grayish-blue: hsl(210, 46%, 95%);
     
     --space-unit: 1.6em;
     --space-xxs: calc(0.25 * var(--space-unit));
@@ -13,20 +13,20 @@
     --space-xl: calc(3.25 * var(--space-unit));
     --space-xxl: calc(5.25 * var(--space-unit));
 }
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+html {
     font-size: 62.5%;
     background-color: #ecf2f8;
 }
-body{
+body {
     font-family: "Manrope", sans-serif;
     color: var(--color-very-dark-grayish-blue);
 }
-.container{
+.container {
     margin: 25% auto;
     background-color: #ffffff;
     width: 73rem;
@@ -34,50 +34,45 @@ body{
     display: grid;
     grid-template-columns: 1fr 2fr;
     border-radius: 20px;
-    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0 , 0.06);
+    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
 }
-.drawers-image{
+.drawers-image {
     width: 28.5rem;
     height: 28rem;
-    border-radius: 20px 0 0 20px
+    border-radius: 20px 0 0 20px;
 }
-.text-box{
+.text-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
     padding: 4rem;
 }
-h1{
+h1 {
     line-height: 1.5;
 }
-.paragraph{
+.paragraph {
     line-height: 1.5;
     color: var(--color-grayish-blue);
 }
-.bottom-text{
+.bottom-text {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.avatar-name{
+.avatar-name {
     display: flex;
     align-items: center;
 }
-.avatar{
+.avatar {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
     margin-right: 1.5rem;
 }
-.date{
+.date {
     color: var(--color-desaturated-dark-blue);
 }
-/* .icon{
-    padding: 1rem;
-    background-color: #ecf2f9;
-    border-radius: 50%;
-} */
 .card-share-content {
     border-radius: 5px;
     position: absolute;
@@ -92,20 +87,13 @@ h1{
     transition: opacity 200ms ease;
     box-shadow: hsla(217, 19%, 35%, 10%) 0px 12px 24px 12px;
 }
-.card-share-label {
-    color: var(--color-light-grayish-blue);
-    text-transform: uppercase;
-    letter-spacing: 0.47em;
-    font-size: 0.75rem;
-    margin-right: 1.5rem;
-}
 .card-share-list {
     position: relative;
     z-index: 999;
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 }
 .card-share-item a {
     width: 1.25rem;
@@ -118,30 +106,35 @@ h1{
     outline-offset: 4px;
 }
 .card-share-label {
+    color: var(--color-desaturated-dark-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.47em;
+    font-size: 0.75rem;
+    margin-right: 1.5rem;
     position: relative;
     z-index: 999;
     width: 2rem;
     height: 2rem;
     padding: 0.5625rem 0 0.625rem 0;
     border: none;
-    color: var(--color-light-grayish-blue);
     cursor: pointer;
     background-color: var(--color-very-dark-grayish-blue);
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     transition-property: background-color, transform;
     transition-duration: 200ms;
     transition-timing-function: ease;
 }
-.card-share-content p{
-    color: #fff;
+.card-share-content p {
+    color: var(--color-grayish-blue);
+    font-size: .8rem;
 }
 .card-share-btn.menu-shown {
-    background-color: var(--color-very-dark-grayish-blue);
+    background-color: var(--color-desaturated-dark-blue);
 }
 .card-share-btn.menu-shown svg path {
-    fill: var(--color-very-dark-grayish-blue);
+    fill: var(--color-light-grayish-blue);
 }
 .card-share-btn svg {
     pointer-events: none;
@@ -156,10 +149,11 @@ h1{
 .card-share-btn:active {
     transform: scale(0.95);
 }
-.card-share-btn{
+.card-share-btn {
     padding: 1rem;
     background-color: #ecf2f9;
     border-radius: 50%;
+    border: none;
 }
 @media (hover: hover) {
     .card-share-btn:hover {
@@ -169,11 +163,11 @@ h1{
         fill: var(--color-light-grayish-blue);
     }
 }
-@media(min-width:42em){
+@media (min-width: 42em) {
     .card-share {
         position: relative;
     }
-    .card-share-btn{
+    .card-share-btn {
         padding: 1rem;
         background-color: #ecf2f9;
         border-radius: 50%;
@@ -196,18 +190,23 @@ h1{
         background-color: var(--color-very-dark-grayish-blue);
     }
 }
-@media(max-width:23em){
-    .container{
+@media (max-width: 34em) {
+    .container {
         margin: 0 auto;
-        width: min(100vw - 3rem, 25rem);
-        min-height: 100vh;
-        display: grid;
-        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        width: min(100vw - 1rem, 45rem);
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
     }
-    .drawers-image{
+    .drawers-image {
+        display: block;
         width: 100%;
-        max-height: 12.5rem;
         object-fit: cover;
         border-radius: 20px 20px 0 0;
+    }
+    .text-box {
+        position: relative;
+        padding: 2.25rem 2rem 1.25rem 2rem;
     }
 }
