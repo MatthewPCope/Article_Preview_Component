@@ -81,7 +81,8 @@ h1 {
     justify-content: space-around;
     left: 0;
     right: 0;
-    top: calc(100% + 0.625rem);
+    bottom: 0;
+    /* top: calc(100% + 0.625rem); */
     padding: 1rem 4rem;
     background-color: var(--color-very-dark-grayish-blue);
     transition: opacity 200ms ease;
